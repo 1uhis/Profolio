@@ -1,103 +1,80 @@
-import Image from "next/image";
+'use client';
+
+import { useEffect, useState } from 'react';
+import projects from './data/ projects';
+import Link from "next/link";
+import './globals.css'
+
+const activities = [
+  { text: 'job hunting', style: 'text-green-600 font-pixelify' },
+  { text: 'coding', style: 'text-blue-500 font-mono' },
+  { text: 'playing with dogs', style: 'text-yellow-600 font-bold font-silkscreen' },
+  { text: 'enjoying music', style: 'text-pink-500 font-serif' },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [displayedText, setDisplayedText] = useState('');
+  const [activityIndex, setActivityIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  const latest = [...projects].sort((a, b) => b.date.localeCompare(a.date))[0];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const current = activities[activityIndex];
+
+  useEffect(() => {
+    const typingSpeed = deleting ? 50 : 120;
+
+    const timeout = setTimeout(() => {
+      if (!deleting && charIndex < current.text.length) {
+        setDisplayedText(current.text.slice(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      } else if (deleting && charIndex > 0) {
+        setDisplayedText(current.text.slice(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+      } else if (!deleting && charIndex === current.text.length) {
+        setTimeout(() => setDeleting(true), 1000);
+      } else if (deleting && charIndex === 0) {
+        setDeleting(false);
+        setActivityIndex((prev) => (prev + 1) % activities.length);
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [charIndex, deleting, activityIndex]);
+
+  return (
+    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-12 text-gray-800">
+      <div className="flex justify-center items-center h-[70vh] text-3xl md:text-5xl font-semibold text-center">
+        <span>Meanwhile, Bess is&nbsp;</span>
+        <span
+          className={`inline-block min-w-[500px] text-left transition-all duration-300 ${current.style} whitespace-pre`}
+        >
+          {displayedText}
+          <span className="border-r-2 border-black animate-pulse ml-1"></span>
+        </span>
+      </div>
+
+      {/* Project Preview Section */}
+      <section className="w-full max-w-4xl">
+        <h2 className="text-2xl font-bold mb-4 font-pixelify">Latest Project</h2>
+        <Link href={`/projects/${latest.slug}`}>
+          <div className="border rounded-lg p-4 hover:shadow-md">
+            <h3 className="text-lg font-semibold">{latest.title}</h3>
+            <p className="text-sm text-gray-600 mt-1">{latest.description}</p>
+          </div>
+        </Link>
+      </section>
+
+      {/* Blog Preview Section */}
+      <section className="w-full max-w-4xl mt-12">
+        <h2 className="text-2xl font-semibold mb-4 font-pixelify">Latest Blog</h2>
+        <div className="bg-gray-100 rounded-xl p-6 shadow hover:shadow-md transition">
+          <h3 className="text-xl font-medium">What I Learned from Teaching JavaScript</h3>
+          <p className="text-gray-700 mt-2">
+            Reflecting on my experience as a TA and mentor, sharing insights about learning by teaching.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </main>
   );
 }
