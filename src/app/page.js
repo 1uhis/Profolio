@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import projects from './data/ projects';
+import projects from './data/projects';
 import blogs from './data/blogs';
 import Link from "next/link";
 import './globals.css'

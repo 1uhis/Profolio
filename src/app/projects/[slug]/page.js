@@ -1,4 +1,4 @@
-import projects from "@/app/data/ projects";
+import projects from "@/app/data/projects";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
