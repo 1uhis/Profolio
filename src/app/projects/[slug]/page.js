@@ -2,6 +2,7 @@ import projects from "@/app/data/ projects";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function ProjectDetail({ params }) {
     const project = projects.find((p) => p.slug === params.slug);
@@ -14,9 +15,11 @@ export default function ProjectDetail({ params }) {
                 ← Back to Projects
             </Link>
             <h1 className="text-3xl font-bold mb-4">{project.title}</h1>
-            <img
+            <Image
                 src={project.image}
                 alt={project.title}
+                width={600}
+                height={400}
                 className="w-full h-full object-cover rounded-lg mb-6"
             />
             <div className="text-gray-600 mb-4">

@@ -21,7 +21,7 @@ export default function Navbar() {
     <nav className="bg-thrtiary-purple shadow-md sticky top-0 z-50 font-pixelify">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-lg font-bold text-black whitespace-nowrap">
-          Welcome to Bess's playground
+          Welcome to Bess&apos;s playground
         </div>
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
@@ -34,11 +34,10 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-lg transition-colors ${
-                  pathname === item.href
+                className={`text-lg transition-colors ${pathname === item.href
                     ? 'text-purple-600'
                     : 'text-gray-700 hover:text-black'
-                }`}
+                  }`}
               >
                 {item.label}
               </Link>
@@ -52,11 +51,10 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`text-lg transition-colors ${
-                pathname === item.href
+              className={`text-lg transition-colors ${pathname === item.href
                   ? 'text-purple-600'
                   : 'text-gray-700 hover:text-black'
-              }`}
+                }`}
               onClick={() => setMenuOpen(false)}
             >
               {item.label}

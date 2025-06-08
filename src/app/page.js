@@ -27,18 +27,19 @@ export default function Home() {
   const latest_blog = [...blogs].sort((a, b) => b.date.localeCompare(a.date))[0];
 
   const current = activities[activityIndex];
+  const text = current.text;
 
   useEffect(() => {
     const typingSpeed = deleting ? 50 : 120;
 
     const timeout = setTimeout(() => {
-      if (!deleting && charIndex < current.text.length) {
-        setDisplayedText(current.text.slice(0, charIndex + 1));
+      if (!deleting && charIndex < text.length) {
+        setDisplayedText(text.slice(0, charIndex + 1));
         setCharIndex((prev) => prev + 1);
       } else if (deleting && charIndex > 0) {
-        setDisplayedText(current.text.slice(0, charIndex - 1));
+        setDisplayedText(text.slice(0, charIndex - 1));
         setCharIndex((prev) => prev - 1);
-      } else if (!deleting && charIndex === current.text.length) {
+      } else if (!deleting && charIndex === text.length) {
         setTimeout(() => setDeleting(true), 1000);
       } else if (deleting && charIndex === 0) {
         setDeleting(false);
@@ -47,7 +48,7 @@ export default function Home() {
     }, typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [charIndex, deleting, activityIndex]);
+  }, [charIndex, deleting, activityIndex, text]);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-6 py-12 text-gray-800">

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import projects from "../data/ projects";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function ProjectsPage() {
     const [selectedTech, setSelectedTech] = useState(null);
@@ -23,8 +24,8 @@ export default function ProjectsPage() {
                 <button
                     onClick={() => setSelectedTech(null)}
                     className={`font-pixelify px-3 py-1 rounded-full text-sm border ${selectedTech === null
-                            ? "bg-highlight-purple text-white"
-                            : "bg-white text-black hover:bg-gray-100"
+                        ? "bg-highlight-purple text-white"
+                        : "bg-white text-black hover:bg-gray-100"
                         }`}
                 >
                     All
@@ -34,8 +35,8 @@ export default function ProjectsPage() {
                         key={tag}
                         onClick={() => setSelectedTech(tag)}
                         className={`font-pixelify px-3 py-1 rounded-full text-sm border transition-colors duration-200 ${selectedTech === tag
-                                ? "bg-highlight-purple text-white"
-                                : "bg-white text-black hover:bg-gray-100"
+                            ? "bg-highlight-purple text-white"
+                            : "bg-white text-black hover:bg-gray-100"
                             }`}
                     >
                         {tag}
@@ -47,9 +48,11 @@ export default function ProjectsPage() {
                 {filteredProjects.map((project) => (
                     <Link href={`/projects/${project.slug}`} key={project.slug}>
                         <div className="border rounded-xl p-4 hover:shadow-lg transition duration-200 bg-thrtiary-purple hover:bg-secondary-purple">
-                            <img
+                            <Image
                                 src={project.image}
                                 alt={project.title}
+                                width={600}
+                                height={400}
                                 className="w-full h-48 object-cover rounded-md mb-4"
                             />
                             <h2 className="font-pixelify text-xl font-semibold">{project.title}</h2>

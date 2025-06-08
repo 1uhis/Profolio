@@ -5,9 +5,9 @@ import { Download, Linkedin, Github } from 'lucide-react';
 export default function ContactPage() {
     return (
         <div className="max-w-3xl mx-auto px-6 pt-32 pb-12 text-center">
-            <h1 className="text-3xl font-bold mb-6 font-pixelify">Let's Connect!</h1>
+            <h1 className="text-3xl font-bold mb-6 font-pixelify">Let&apos;s Connect!</h1>
             <p className="text-gray-600 mb-10">
-                Whether it’s about a project, feedback, or just a chat—feel free to reach out.
+                Whether it&apos;s about a project, feedback, or just a chat—feel free to reach out.
             </p>
 
             <div className="flex flex-col md:flex-row justify-center gap-4">
