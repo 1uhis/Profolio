@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "Meanwhile, Bess is ...",
@@ -17,9 +18,10 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen text-gray-900">
+      <body className="min-h-screen flex flex-col text-gray-900">
         <Navbar />
-        <main className="p-6">{children}</main>
+        <main className="flex-grow p-6">{children}</main>
+        <Footer />
       </body>
     </html>
   );
