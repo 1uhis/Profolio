@@ -12,7 +12,7 @@ export default function ContactPage() {
 
             <div className="flex flex-col md:flex-row justify-center gap-4">
                 <a
-                    href="https://drive.google.com/file/d/1HF8BicyX_xWAwC9KL2zXnpVKwHE5PEe5/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1_wgYTUflTVFTA_7tetfty1F56fq6cH-N/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-5 py-3 border border-gray-800 rounded-md hover:bg-gray-100 transition font-semibold w-full md:w-auto"
