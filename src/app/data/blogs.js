@@ -1,5 +1,57 @@
 const blogs = [
     {
+  id: "3",
+  title: "What I Learned This Week: From Web3 to Modern Web Architecture",
+  slug: "weekly-learnings-web3",
+  category: "tech",
+  excerpt: "This past week has been a whirlwind of technical learning—from understanding decentralized exchanges and trading fees to diving into React and Next.js.",
+  date: "2025-07-03",
+  content: `
+## Web3: Making Sense of the Crypto Jungle
+
+This week, I dove headfirst into the world of Web3. It's wild, chaotic, but also incredibly fascinating. Here are some of the key things I learned:
+
+- **Centralized vs Decentralized Exchanges (CEX vs DEX)**: I now understand how they operate differently, including concepts like **custodial risk**, **order books**, and **fees**.
+- **Order Types**: Market order vs Limit order—simple terms, but very different implications depending on volatility and slippage.
+- **Liquidity and Depth**: These define how stable an exchange is for larger trades. Shallow depth = more price impact.
+- **Slippage**: That annoying little hidden cost you notice only when it's already too late 😅.
+- **Cold vs Hot Wallets**: Cold wallets = offline & safer. Hot wallets = online & faster, but also riskier.
+
+Even if I’m not trading yet, it feels empowering to understand the backbone of Web3 infrastructure.
+
+---
+
+## React Query vs React.use
+
+I’ve always relied on \`useState\` + \`useEffect\` to fetch data, but **React Query** changes the game. Here’s how:
+
+- It handles caching, loading, error, and refetching automatically.
+- Works great with APIs, especially in apps where you’re reading remote data often.
+- Less boilerplate than writing \`fetch\`, setting state, handling loading manually.
+
+Pairing this with **tRPC** was an eye-opener. I don’t have to manually write API routes with \`fetch\`—just define procedures and call them directly.
+
+Also got more comfortable with React's experimental \`use()\` function—very cool for reading async resources in server components.
+
+---
+
+## Next.js + TailwindCSS Deep Dive
+
+- **Server Actions**: I explored this new way of handling mutations *on the server*, securely and without needing client-side API calls.
+- **Next.js API routes vs tRPC**: Understanding when and why to use each helped me rethink my fullstack flow.
+- **TailwindCSS \`data-*\` Attributes**: These let you style components conditionally based on data state, without adding extra JS or class toggling. Clean and powerful!
+
+---
+
+## Takeaway
+
+Honestly, the amount of learning I crammed into one week surprised me. I’m starting to feel more confident navigating between frontend and backend concerns, and understanding what’s happening under the hood—whether it’s a React hook or a crypto exchange protocol.
+
+These aren’t just “buzzwords” anymore—they’re starting to click.
+
+I’m building things with more intention now.`
+},
+    {
         id: "2",
         title: "A Meetup, A Mindset Shift",
         slug: "meetup-mindset-shift",
