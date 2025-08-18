@@ -1,5 +1,59 @@
 const projects = [
     {
+        title: "NFT Blind Box",
+        slug: "nft-blind-box",
+        description: "A Web3 project for minting and opening NFT blind boxes using Ethereum smart contracts.",
+        stack: ["Next.js", "TypeScript", "Viem", "Wagmi", "Ethers.js", "Solidity"],
+        github: "https://github.com/1uhis/NFT-Blind-Box",
+        image: "/projects/nft-blind-box.png",
+        date: "2025-08-19",
+        content: `## 🌐 Project Overview
+
+This project is an **NFT Blind Box application** built on Ethereum, allowing users to mint NFTs and reveal them instantly in a blind-box style interface. It integrates wallet connection, smart contract interaction, and real-time token metadata display.
+
+The goal of the project is to provide a smooth and interactive NFT experience for users, demonstrating both blockchain integration and frontend development skills.
+
+---
+
+## 🛠 Technologies Used
+
+- **Frontend**: Next.js, TypeScript, Tailwind CSS  
+- **Blockchain**: Solidity (ERC-721 Smart Contract)  
+- **Wallet Integration**: Wagmi, Viem, Ethers.js  
+
+---
+
+## 🌟 Key Features
+
+- Connect to MetaMask wallet seamlessly  
+- Mint NFTs through Ethereum smart contract  
+- Fetch and display NFT metadata (TokenURI) dynamically  
+- Responsive design for desktop and mobile  
+- Real-time minting status feedback  
+
+---
+
+## 💻 What I Did
+
+- Built the frontend with Next.js and TypeScript  
+- Integrated Wagmi and Ethers.js to interact with smart contracts  
+- Implemented wallet connection and minting workflow  
+- Parsed tokenURI to fetch and display images dynamically  
+- Designed a clean, responsive UI with Tailwind CSS  
+- Handled blockchain transaction states and errors  
+
+---
+
+## 📚 What I Learned
+
+- How to interact with Ethereum smart contracts from a frontend application  
+- Handling asynchronous blockchain transactions and state updates  
+- Parsing and displaying NFT metadata dynamically  
+- Improving Web3 user experience with wallet connection and minting feedback   
+- Importance of user-friendly error handling in blockchain apps
+`,
+    },
+    {
         title: "Portfolio Website",
         slug: "portfolio-site",
         description: "My personal website built with Next.js.",
