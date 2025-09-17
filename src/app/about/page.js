@@ -27,10 +27,6 @@ export default function AboutPage() {
             </a>
             .
           </p>
-
-          <p className="text-lg mb-4">
-            Outside of code, I love playing games, playing with dogs, and quietly studying life&apos;s patterns. I believe growth comes from reflection, and that curiosity is a developer&apos;s superpower.
-          </p>
         </div>
         <div className="md:w-1/3 justify-center">
           <Image
